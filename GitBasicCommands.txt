@@ -37,9 +37,9 @@
 ==========Git Branch==============
 
 0)git branch                                    <---Check current branch --->
-1)git branch -M "name"                          <---Branch rename--->
+1)git branch -M "name"                          <---Branch create--->
 2)git checkout "branch name"                    <---Branch navigate--->
-3)git checkout -b "branch name"                 <---Branch create---> 
+3)git checkout -b "branch name"                 <---Create a new branch and move me there right now---> 
 4)git branch -d "branch name"                   <--- To delete branch--->
 
 ==========Git Merging Branch==============
