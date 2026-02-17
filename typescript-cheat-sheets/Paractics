@@ -139,3 +139,159 @@ type key = keyof UserKeyOf //name|age
 const value:key ="name"
 
 console.log("keyof",value)
+
+//=======================typeof=======================================
+
+const userTypeOf = {
+    name:"abaid",
+    age:20
+}
+
+type userTypeOfType = typeof userTypeOf
+
+const userTypeOfTest:userTypeOfType ={
+    name:"abaid",
+    age:20
+}
+
+console.log("userTypeOfTest",userTypeOfTest.age)
+
+//==============================Partial (Utility Type)==================
+type User = {
+  name: string
+  email: string
+  age: number
+}
+
+// Normally, we must provide all properties
+const user1: User = { name: "Abaid", email: "test@gmail.com", age: 25 }
+
+// Partial allows us to provide only some
+const updateUser: Partial<User> = { 
+  name: "Ali"  // email and age are optional now
+}
+console.log("Partial",updateUser)
+
+//===========================Pick (Utility Type)============================
+type UserPick = { name: string; email: string; age: number }
+
+type UserPreview = Pick<UserPick, "name" | "email">
+
+const preview: UserPreview = {
+  name: "Abaid",
+  email: "test@gmail.com",
+  //age:20
+  // age is not allowed here
+}
+
+console.log("Pick (Utility Type)",preview)
+
+//=========================Omit (Utility Type)==============================
+type UserWithoutEmail = Omit<User, "email"|"name">
+
+const userWithoutEmail: UserWithoutEmail = {
+//   name: "Abaid",
+  age: 25
+  // email is not allowed here
+}
+console.log("userWithoutEmail",userWithoutEmail)
+
+//============================Record (Utility Type)==========================
+let scores: Record<string, number> = {
+  math: 90,
+  english: 85
+}
+// Every property must have a number value
+
+//==========================Literal Types===================================
+let statusLiteral: "success" | "error"
+statusLiteral = "success"  // ✅ valid
+// status = "pending"  // ❌ Error: not allowed
+console.log("statusLiteral",statusLiteral)
+
+//===========================Mapped Types=================================
+type UserMapped = { name: string; email: string }
+
+type OptionalUser = {
+  [Key in keyof UserMapped]?: UserMapped[Key]
+}
+
+const user: OptionalUser = { name: "Abaid" }  // email optional
+
+//==============================Conditional Types========================
+type IsString<T> = T extends string ? true : false
+
+type Test1 = IsString<string>  // true
+type Test2 = IsString<number>  // false
+
+//==============================Class====================================
+class UserClass {
+  constructor(public name: string) {}
+  
+  greet() {
+    return "Hello " + this.name
+  }
+}
+
+const usercls = new UserClass("Abaid")
+console.log(usercls.greet())  // Hello Abaid
+
+//=================================Abstract Class=======================
+abstract class Animal {
+  abstract makeSound(): void
+}
+
+class Dog extends Animal {
+  makeSound() {
+    console.log("Woof!")
+  }
+}
+
+const dog = new Dog()
+dog.makeSound()  // Woof!
+
+//=============================Module Export / Import=====================
+// user.ts
+export type UserModule = { name: string }
+
+// main.ts
+import { UserModule } from "./user"
+
+const u: UserModule = { name: "Abaid" }
+
+//==============================React Props==================================
+type Props = { name: string }
+
+const MyComponent = ({ name }: Props) => {
+  return <div>{name}</div>
+}
+
+//===============================Redux State=================================
+interface UserState {
+  users: string[]
+  loading: boolean
+}
+
+const initialState: UserState = {
+  users: [],
+  loading: false
+}
+
+//===========================Next.js API Type===============================
+import { NextApiRequest, NextApiResponse } from "next"
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  res.status(200).json({ message: "Hello TypeScript" })
+}
+
+
+
+
+
+
+
+
+
