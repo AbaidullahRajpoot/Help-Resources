@@ -1,0 +1,199 @@
+🟢 1. Basic Types
+let name: string = "Abaid"
+let age: number = 25
+let isActive: boolean = true
+
+🟢 2. Array
+let numbers: number[] = [1, 2, 3]
+
+🟢 3. Tuple
+let user: [string, number] = ["Abaid", 25]
+
+🟢 4. Any
+let data: any = "hello"
+data = 10
+
+🟢 5. Unknown
+let value: unknown = "Hello"
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase())
+}
+
+🟢 6. Void
+function logMessage(): void {
+  console.log("Hello")
+}
+
+🟢 7. Never
+function throwError(): never {
+  throw new Error("Something went wrong")
+}
+
+🟢 8. Function with Types
+function add(a: number, b: number): number {
+  return a + b
+}
+
+🟢 9. Optional Parameter
+function greet(name: string, age?: number) {
+  return name
+}
+
+🟢 10. Object Type
+let user: { name: string; email: string } = {
+  name: "Abaid",
+  email: "test@gmail.com"
+}
+
+🟢 11. Type Alias
+type User = {
+  name: string
+  email: string
+}
+
+let user1: User = {
+  name: "Ali",
+  email: "ali@gmail.com"
+}
+
+🟢 12. Interface
+interface User {
+  name: string
+  email: string
+}
+
+let user2: User = {
+  name: "Ahmed",
+  email: "ahmed@gmail.com"
+}
+
+🟢 13. Union Type
+let id: string | number
+id = 10
+id = "abc"
+
+🟢 14. Intersection Type
+type Person = { name: string }
+type Employee = { salary: number }
+
+type Staff = Person & Employee
+
+let worker: Staff = {
+  name: "Abaid",
+  salary: 50000
+}
+
+🟢 15. Enum
+enum Role {
+  Admin,
+  User
+}
+
+let myRole: Role = Role.Admin
+
+🟡 16. Type Inference
+let city = "Lahore" // automatically string
+
+🟡 17. Type Assertion
+let input = document.getElementById("name") as HTMLInputElement
+
+🟡 18. Generics
+function identity<T>(value: T): T {
+  return value
+}
+
+identity<string>("Hello")
+
+🟡 19. Generic Interface
+interface ApiResponse<T> {
+  data: T
+  success: boolean
+}
+
+let response: ApiResponse<string> = {
+  data: "User created",
+  success: true
+}
+
+🟡 20. keyof
+type User = { name: string; age: number }
+type Keys = keyof User // "name" | "age"
+
+🟡 21. typeof
+const user = { name: "Abaid" }
+type UserType = typeof user
+
+🟡 22. Partial (Utility Type)
+type User = { name: string; email: string }
+
+let updateUser: Partial<User> = {
+  name: "Ali"
+}
+
+🟡 23. Pick
+type User = { name: string; email: string; age: number }
+
+type UserPreview = Pick<User, "name" | "email">
+
+🟡 24. Omit
+type UserWithoutEmail = Omit<User, "email">
+
+🟡 25. Record
+let scores: Record<string, number> = {
+  math: 90,
+  english: 85
+}
+
+🔴 26. Literal Type
+let status: "success" | "error"
+status = "success"
+
+🔴 27. Mapped Type
+type Optional<T> = {
+  [Key in keyof T]?: T[Key]
+}
+
+🔴 28. Conditional Type
+type IsString<T> = T extends string ? true : false
+
+type Test = IsString<string> // true
+
+🔴 29. Class
+class User {
+  constructor(public name: string) {}
+
+  greet() {
+    return "Hello " + this.name
+  }
+}
+
+🔴 30. Abstract Class
+abstract class Animal {
+  abstract makeSound(): void
+}
+
+🔴 31. Module Export/Import
+// user.ts
+export type User = { name: string }
+
+// main.ts
+import { User } from "./user"
+
+🔴 32. React Props (Simple)
+type Props = {
+  name: string
+}
+
+const MyComponent = ({ name }: Props) => {
+  return <div>{name}</div>
+}
+
+🔴 33. Redux State Example
+interface UserState {
+  users: string[]
+  loading: boolean
+}
+
+🔴 34. Next.js API Type
+import { NextApiRequest, NextApiResponse } from "next"
