@@ -1,0 +1,141 @@
+//==================================Type Simple=============================
+const testNumber : number = 20
+const testChar : string= "Abaidullah"
+const testBollean :boolean =true
+const testNull:null=null
+const testUndefine:undefined=undefined
+const anyValue :any =true
+const unknownValue :unknown = 10
+if(typeof unknownValue == "string"){
+    console.log("Check Type of unknownValue",unknownValue)
+}
+console.log("Simple Data Type Console",testNumber,testChar,testBollean,testNull,testUndefine,anyValue,unknownValue)
+
+//==================================Type Function=======================================
+const funcReturnValue = ():number =>{
+    return 10
+}
+
+function returnChar ():string{
+    return "A"
+} 
+
+const funcReturnValuePar = (a:number,b:number):number=>{
+    return a+b
+}
+
+console.log("Function Console",funcReturnValue(),returnChar(),funcReturnValuePar(10,20))
+
+//============================Type Object============================================
+const UserData:{
+    name:string,
+    email:string
+    age:number
+} = {
+    name:"Abaidullah",
+    email:"mr.abaidullahrajpoot@gmail.com",
+    age:20
+}
+
+console.log("UserData",UserData.name)
+
+//=======================Type Alias========================================
+
+type UserAlias = {
+    name:string,
+    email:string,
+    age:number,
+}
+
+const UserDataAlias :UserAlias ={
+    name:"abaidullahrajpoot",
+    email:"mr.abaidullahrajpoot.com",
+    age:20
+}
+
+
+//====Intersection Type====
+type Id = { id: number }
+type Person = { name: string }
+type Employee = { salary: number }
+type Staff = Id & Person & Employee
+
+let worker: Staff = {
+  id:1,
+  name: "Abaid",
+  salary: 50000
+}
+console.log("UserDataIntersection",UserDataAlias.email)
+console.log("UserDataIntersection",worker.id)
+
+
+
+//================================Type Interface===========================
+
+interface UserInterFace {
+ name:string,
+ email:string,
+ age:number
+}
+
+const UserDataInterface : UserInterFace ={
+    name:"Abaidullah",
+    email:"mr.abaidullahrajpoot.com",
+    age:20
+}
+
+console.log("UserDataInterface",UserDataInterface.age)
+
+
+//============================Union Type=================================
+
+let id : number | string
+id=10
+console.log("Union Type id",id)
+id="abaidullahrajpoot"
+console.log("Union Type id",id)
+
+//==========================Type Enum==================================
+
+enum Role {
+    User,
+    Admin,
+    SuperAdmin
+
+}
+
+const userRole :Role = Role.Admin
+console.log("userRole",userRole)
+
+//==============================Type Assertion=========================
+let input = document.getElementById("name") as HTMLInputElement
+
+//=============================Type Generics=========================
+
+function GenericsFunction<T> (value:T):T{
+return value
+}
+
+console.log("Generics",GenericsFunction<string>("This is Generics Func"))
+
+//========================Generic Interface=============================
+interface UserGender<Gender> {
+    gender:Gender
+}
+
+let userDataGender:UserGender<string>={
+    gender:"Male"
+}
+
+console.log("userDataGender",userDataGender.gender)
+
+//==========================keyof===================================
+type UserKeyOf = {
+    name:string,
+    age:number
+}
+type key = keyof UserKeyOf //name|age
+
+const value:key ="name"
+
+console.log("keyof",value)
