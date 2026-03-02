@@ -217,3 +217,7 @@ db.orders.aggregate([
     "totalAmount": 45
   }
 ]
+
+==============================================MongoDb Backup and restore======================================
+mongorestore --db dbName "D:\MongoDbBackup\talkright"
+mongodump --uri="mongodb://username:password@localhost:27017/yourDatabase" --out=/backup-folder
