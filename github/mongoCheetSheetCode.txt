@@ -220,4 +220,7 @@ db.orders.aggregate([
 
 ==============================================MongoDb Backup and restore======================================
 mongorestore --db dbName "D:\MongoDbBackup\talkright"
+=================for backup=========================
 mongodump --uri="mongodb://username:password@localhost:27017/yourDatabase" --out=/backup-folder
+=================for upload data====================
+mongorestore --uri "mongodb://username:password@localhost:27017/yourDatabase" --db talkright "D:\backup\talkright"
