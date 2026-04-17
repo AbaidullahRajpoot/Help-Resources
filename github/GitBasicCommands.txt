@@ -41,6 +41,7 @@
 2)git checkout "branch name"                    <---Branch navigate--->
 3)git checkout -b "branch name"                 <---Create a new branch and move me there right now---> 
 4)git branch -d "branch name"                   <--- To delete branch--->
+5)git push origin --delete branch-name           <--- To Remote delete branch--->
 
 ==========Git Merging Branch==============
 
